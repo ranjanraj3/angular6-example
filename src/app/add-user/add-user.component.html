@@ -1,0 +1,45 @@
+<div class="col-md-6">
+  <h2 class="text-center">Add User</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="Email">Email address:</label>
+      <input type="Email" formControlName="Email" placeholder="Email" name="Email" class="form-control" id="Email">
+      <div *ngIf="submitted && addForm.controls.Email.errors" class="error">
+        <div *ngIf="addForm.controls.Email.errors.required">Email is required</div>
+        <div *ngIf="addForm.controls.Email.errors.email">Email is required</div>
+      </div>
+
+      
+    </div>
+
+    <div class="form-group">
+      <label for="FirstName">First Name:</label>
+      <input formControlName="FirstName" placeholder="First Name" name="FirstName" class="form-control" id="FirstName">
+      <div *ngIf="submitted && addForm.controls.FirstName.errors" class="error">
+        <div *ngIf="addForm.controls.FirstName.errors.required">FirstName is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="LastName">Last Name:</label>
+      <input formControlName="LastName" placeholder="Last name" name="LastName" class="form-control" id="LastName">
+      <div *ngIf="submitted && addForm.controls.LastName.errors" class="error">
+        <div *ngIf="addForm.controls.LastName.errors.required">LastName is required</div>
+      </div>
+    </div>
+    
+    <mat-form-field>
+      <mat-select placeholder="Select gender" formControlName="Gender" name="Gender" id="Gender">
+        <mat-option *ngFor="let g of genders" [value]="g">
+          {{g}}
+        </mat-option>
+      </mat-select>
+      
+    </mat-form-field>
+    <div *ngIf="submitted && addForm.controls.Gender.errors" class="error">
+      <div *ngIf="addForm.controls.Gender.errors.required">Gender is required</div>
+    </div>
+
+    <button class="btn btn-success">Update</button>
+  </form>
+</div>
